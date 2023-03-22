@@ -1,7 +1,7 @@
 import path from 'path';
 
 import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
-import vuePlugin from '@vitejs/plugin-vue2';
+import vue from '@vitejs/plugin-vue';
 import copy from 'rollup-plugin-copy';
 import { defineConfig } from 'vite';
 import StylelintPlugin from 'vite-plugin-stylelint';
@@ -37,7 +37,7 @@ export default defineConfig(({ mode }) => ({
     },
     plugins: [
         viteCommonjs(),
-        vuePlugin(),
+        vue(),
         StylelintPlugin({
             include: ['src/**/*.{css,vue,pcss,scss}'],
             exclude: ['node_modules'],
