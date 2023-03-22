@@ -1,20 +1,18 @@
-import Vue from 'vue';
-
-import type { LocaleMessageObject } from 'vue-i18n';
-import VueI18n from 'vue-i18n';
+import { createI18n } from 'vue-i18n';
+import type { I18n, LocaleMessage } from 'vue-i18n';
 
 
 import en from '@/translations/language-pack/en.json';
 import ja from '@/translations/language-pack/ja.json';
 import ko from '@/translations/language-pack/ko.json';
 
-Vue.use(VueI18n);
+// Vue.use(VueI18n);
 
 export const supportLanguages = ['en', 'ko', 'jp'] as const;
 export type SupportLanguage = typeof supportLanguages[number];
 
 // simple recursive remove keys with empty value
-const removeEmpty = (obj: object | any): LocaleMessageObject => Object.keys(obj)
+const removeEmpty = (obj: object | any): LocaleMessage => Object.keys(obj)
     .filter((k: string) => obj[k] !== null && obj[k] !== undefined && obj[k] !== '') // Remove undef. and null and empty.string.
     .reduce(
         (newObj, k) => (typeof obj[k] === 'object'
@@ -29,7 +27,7 @@ export const messages: Record<SupportLanguage, any> = {
     jp: removeEmpty({ COMPONENT: ja }),
 };
 
-export const i18n = new VueI18n({
+export const i18n = createI18n({
     locale: 'en', // set locale
     fallbackLocale: 'en',
     messages,
@@ -37,13 +35,13 @@ export const i18n = new VueI18n({
 });
 
 export class I18nConnector {
-    private static _i18n: VueI18n;
+    private static _i18n: I18n;
 
     static get i18n() {
         return I18nConnector._i18n;
     }
 
-    static set i18n(_i18n: VueI18n) {
+    static set i18n(_i18n: I18n) {
         I18nConnector._i18n = _i18n;
     }
 }
