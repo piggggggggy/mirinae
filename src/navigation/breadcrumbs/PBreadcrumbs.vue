@@ -75,7 +75,7 @@
 import type { PropType } from 'vue';
 import { defineComponent, reactive } from 'vue';
 
-import type { Location } from 'vue-router';
+import type { RouteLocation } from 'vue-router';
 
 import PI from '@/foundation/icons/PI.vue';
 import PCopyButton from '@/inputs/buttons/copy-button/PCopyButton.vue';
@@ -83,7 +83,7 @@ import PCopyButton from '@/inputs/buttons/copy-button/PCopyButton.vue';
 interface Route {
     name: string;
     path?: string;
-    to?: Location;
+    to?: RouteLocation;
 }
 
 interface Props {

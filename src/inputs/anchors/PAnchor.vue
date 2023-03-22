@@ -40,7 +40,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 
-import type { Location } from 'vue-router';
+import type { RouteLocation } from 'vue-router';
 
 import PI from '@/foundation/icons/PI.vue';
 import { AnchorSize, IconPosition } from '@/inputs/anchors/type';
@@ -53,7 +53,7 @@ interface AnchorProps {
   hideIcon?: boolean;
   iconName?: string;
   href?: string;
-  to?: Location;
+  to?: RouteLocation;
   disabled?: boolean;
   highlight?: boolean;
 }
