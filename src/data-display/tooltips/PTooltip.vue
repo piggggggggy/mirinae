@@ -1,5 +1,6 @@
 <template>
-    <component :is="tag" v-tooltip="tooltipOptions"
+    <component :is="tag"
+               v-tooltip="tooltipOptions"
                v-on="$listeners"
     >
         <slot />
@@ -9,12 +10,13 @@
 <script lang="ts">
 import { computed, reactive, toRefs } from 'vue';
 
+// TODO: search and refactor
+// import { VTooltip } from 'floating-vue';
 import { merge } from 'lodash';
-import { VTooltip } from 'v-tooltip';
 
 export default {
     name: 'PTooltip',
-    directives: { tooltip: VTooltip },
+    // directives: { tooltip: VTooltip },
     props: {
         tag: {
             type: String,
@@ -44,7 +46,7 @@ export default {
             tooltipOptions: computed(() => merge({
                 content: props.contents,
                 placement: props.position,
-                classes: ['p-tooltip'],
+                popperClass: ['p-tooltip'],
             }, props.options)),
         });
         return {
