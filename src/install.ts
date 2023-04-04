@@ -1,13 +1,15 @@
 import type { App } from 'vue';
 
-// import VTooltip from 'v-tooltip';
+
 import Notifications from '@kyvg/vue3-notification';
 import type { NotificationsOptions } from '@kyvg/vue3-notification';
+// import VTooltip from 'v-tooltip';
+import FloatingVue, { VTooltip } from 'floating-vue';
+import { setOptions, VueSvgIconPlugin } from '@yzfe/vue3-svgicon';
 import velocity from 'velocity-animate';
 import type { I18n } from 'vue-i18n';
 import type { Router } from 'vue-router';
-import SvgIcon from 'vue-svgicon';
-import { VueSvgIconPlugin } from '@yzfe/vue3-svgicon'
+import 'floating-vue/dist/style.css';
 
 import { i18n, I18nConnector } from '@/translations';
 
@@ -52,10 +54,14 @@ export class MirinaeInstaller {
         vueInstance.use(Notifications, { velocity });
         vueInstance.use(VueSvgIconPlugin, {
             tagName: 'svgicon',
+        })
+        setOptions({
             classPrefix: 'p-i',
-        });
+        })
         // TODO: VTooltip refactoring
         // vueInstance.use(VTooltip, { defaultClass: 'p-tooltip', defaultBoundariesElement: document.body });
+        vueInstance.use(FloatingVue, { boundary: document.body });
+        vueInstance.directive('tooltip', VTooltip);
         // TODO: Create VueRouter Connector and link? or deprecated?
         vueInstance.use(options?.installVueI18n ? i18n : options.vueI18n);
         I18nConnector.i18n = options.vueI18n ?? i18n;
