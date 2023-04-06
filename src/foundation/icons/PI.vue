@@ -30,52 +30,16 @@ interface Props {
     title?: string;
     animation?: AnimationType;
 }
+// TODO: apply animation validator in script setup
+// animation: {
+//     type: String as PropType<AnimationType|undefined>,
+// default: undefined,
+//         validator(animation: AnimationType|undefined) {
+//         return animation === undefined || Object.values(ANIMATION_TYPE).includes(animation);
+//     },
+// },
 
-const props = withDefaults(defineProps({
-    name: {
-        type: String,
-        default: '',
-    },
-    dir: {
-        type: String,
-        default: undefined,
-    },
-    fill: {
-        type: Boolean,
-        default: true,
-    },
-    width: {
-        type: String,
-        default: '1.5rem',
-    },
-    height: {
-        type: String,
-        default: '1.5rem',
-    },
-    scale: {
-        type: String,
-        default: undefined,
-    },
-    color: {
-        type: String,
-        default: undefined,
-    },
-    original: {
-        type: Boolean,
-        default: true,
-    },
-    title: {
-        type: String,
-        default: undefined,
-    },
-    animation: {
-        type: String as PropType<AnimationType|undefined>,
-        default: undefined,
-        validator(animation: AnimationType|undefined) {
-            return animation === undefined || Object.values(ANIMATION_TYPE).includes(animation);
-        },
-    },
-}), {
+const props = withDefaults(defineProps<Props>(), {
     name: '',
     fill: true,
     width: '1.5rem',

@@ -1,5 +1,6 @@
 import type { ArgTypes } from '@storybook/addons';
-import icon from 'vue-svgicon';
+import icons from '@/foundation/icons/p-icons';
+
 
 import { ANIMATION_TYPE } from '@/foundation/icons/config';
 import { ICON_BUTTON_STYLE_TYPE } from '@/inputs/buttons/icon-button/type';
@@ -22,7 +23,7 @@ export const getIconButtonArgTypes = (): ArgTypes => ({
         },
         control: {
             type: 'select',
-            options: Object.keys(icon.icons),
+            options: Object.keys(icons),
         },
     },
     styleType: {

@@ -1,5 +1,6 @@
 import type { ArgTypes } from '@storybook/addons';
-import icon from 'vue-svgicon';
+import icons from '@/foundation/icons/p-icons';
+
 
 import { themes } from '@/data-display/status/config';
 import { ANIMATION_TYPE } from '@/foundation/icons/config';
@@ -41,7 +42,7 @@ export const getStatusArgTypes = (): ArgTypes => ({
         },
         control: {
             type: 'select',
-            options: [null, ...Object.keys(icon.icons)],
+            options: [null, ...Object.keys(icons)],
         },
     },
     text: {

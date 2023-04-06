@@ -1,5 +1,5 @@
 import type { ArgTypes } from '@storybook/addons';
-import icon from 'vue-svgicon';
+import icons from '@/foundation/icons/p-icons';
 
 import {
     standardIconActionSet,
@@ -22,7 +22,7 @@ export const getBoardItemArgTypes = (): ArgTypes => ({
         },
         control: {
             type: 'select',
-            options: Object.keys(icon.icons),
+            options: Object.keys(icons),
         },
     },
     iconButtonSets: {
