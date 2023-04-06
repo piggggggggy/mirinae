@@ -2,38 +2,39 @@ import "@/styles/style.pcss";
 
 import { withDesign } from 'storybook-addon-designs';
 
-import Notifications from 'vue-notification';
+import Notifications from '@kyvg/vue3-notification'
 
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import VueI18n from 'vue-i18n';
+import { createRouter } from 'vue-router';
 import velocity from 'velocity-animate';
-import SvgIcon from 'vue-svgicon';
-import Fragment from "vue-fragment";
+import { VueSvgIconPlugin, setOptions } from '@yzfe/vue3-svgicon'
 
 import webFontLoader from 'webfontloader';
 import { fontUrls, webFonts } from '@/styles/web-fonts.cjs';
 
-import VTooltip from 'v-tooltip';
-
+import { app } from '@storybook/vue3';
 import SpaceOneTheme from './CloudforetTheme';
-import {i18n, I18nConnector} from '@/translations'
+import { i18n, I18nConnector } from '@/translations'
 import { applyAmchartsGlobalSettings } from '@/plugins/amcharts';
-import screens from "@/styles/screens.cjs";
+import screens from '@/styles/screens.cjs';
+import FloatingVue from 'floating-vue';
 
-Vue.use(VueRouter)
-Vue.use(VueI18n);
-Vue.use(Notifications, { velocity });
-Vue.use(SvgIcon, {
+
+
+// app.use(VueRouter)
+app.use(i18n);
+app.use(Notifications, { velocity });
+app.use(VueSvgIconPlugin, {
     tagName: 'svgicon',
-    classPrefix: 'p-i'
-})
-Vue.use(Fragment.Plugin);
-Vue.use(VTooltip, { defaultClass: 'p-tooltip', defaultBoundariesElement: document.body });
+});
+setOptions({
+    classPrefix: 'p-i',
+});
+app.use(FloatingVue, { boundary: document.body });
+
 
 applyAmchartsGlobalSettings()
 
-Vue.prototype.toJSON = function () {
+app.config.globalProperties.toJSON = function () {
     return this;
 };
 
