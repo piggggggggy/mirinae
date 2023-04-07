@@ -4,8 +4,8 @@ import type { App } from 'vue';
 import Notifications from '@kyvg/vue3-notification';
 import type { NotificationsOptions } from '@kyvg/vue3-notification';
 // import VTooltip from 'v-tooltip';
-import FloatingVue, { VTooltip } from 'floating-vue';
 import { setOptions, VueSvgIconPlugin } from '@yzfe/vue3-svgicon';
+import FloatingVue, { VTooltip } from 'floating-vue';
 import velocity from 'velocity-animate';
 import type { I18n } from 'vue-i18n';
 import type { Router } from 'vue-router';
@@ -54,10 +54,10 @@ export class MirinaeInstaller {
         vueInstance.use(Notifications, { velocity });
         vueInstance.use(VueSvgIconPlugin, {
             tagName: 'svgicon',
-        })
+        });
         setOptions({
             classPrefix: 'p-i',
-        })
+        });
         // TODO: VTooltip refactoring
         // vueInstance.use(VTooltip, { defaultClass: 'p-tooltip', defaultBoundariesElement: document.body });
         vueInstance.use(FloatingVue, { boundary: document.body });
